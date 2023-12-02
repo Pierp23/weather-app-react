@@ -15,19 +15,24 @@ export default function Home() {
 
   async function searchFunction() {
     console.log(city)
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&lang={it}`;
-    const response = await fetch(url);
-    const data = await response.json();
+    if (city != null) {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&lang={it}`;
+      const response = await fetch(url);
+      const data = await response.json();
 
-    setWeatherData(data)
+      setWeatherData(data)
+      console.log(city)
 
-    // console.log(data)
-
+    }
   }
 
   const kelvin = weatherData?.main?.temp
   const celsius = Math.floor(kelvin - 273.15) + ' C°';
-  const icon = weatherData?.weather[0]?.main
+  let icon = null
+
+  if (city != null || city != '') {
+    icon = weatherData?.weather[0]?.main
+  }
   const urlIcon = `/${icon}.png`;
   // console.log(icon, urlIcon)
 
