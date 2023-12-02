@@ -25,8 +25,8 @@ export default function Home() {
 
   }
 
-  const fahrenheit = weatherData?.main?.temp
-  const celsius = ((5 / 9) * (fahrenheit - 32)).toFixed(2) + ' C°';
+  const kelvin = weatherData?.main?.temp
+  const celsius = Math.floor(kelvin - 273.15) + ' C°';
   const icon = weatherData?.weather[0]?.main
   const urlIcon = `/${icon}.png`;
   // console.log(icon, urlIcon)
@@ -60,7 +60,7 @@ export default function Home() {
             </h2>
 
             <div id={styles.temperature}>
-              {fahrenheit == null ? '' : celsius}
+              {kelvin == null ? '' : celsius}
             </div>
 
             <div className={styles.infos}>
@@ -74,7 +74,7 @@ export default function Home() {
                   Vento
                 </h3>
                 <div id='wind'>
-                  {fahrenheit == null ? '' : weatherData?.wind?.speed + ' m/s'}
+                  {kelvin == null ? '' : weatherData?.wind?.speed + ' m/s'}
                 </div>
               </div>
 
@@ -88,7 +88,7 @@ export default function Home() {
                   Umidità
                 </h3>
                 <div id='humidity'>
-                  {fahrenheit == null ? '' : weatherData?.main?.humidity + ' %'}
+                  {kelvin == null ? '' : weatherData?.main?.humidity + ' %'}
                 </div>
               </div>
 
