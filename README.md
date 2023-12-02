@@ -1,6 +1,7 @@
 Weather App con React (Next JS)
 
 Creazione di un'applicazione per il meteo.
+
 Stack utilizzati:
     - React con Next JS
     - HTML
